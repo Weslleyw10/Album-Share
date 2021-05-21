@@ -11,16 +11,16 @@
     
 </head>
 <body class="m-5">
-    <div class="container">
+    <div class="container" style="width: 30vw;">
         <div class="row justify-content-center">
             <div class="col">
                 <a href="{% url 'gallery' %}" class="btn btn-dark my-3">Go Back</a>
             </div>
 
-            <div style="height: 50vh;">
-                <img style="max-width: 100%;" class="card-img-top" src="https://i.pinimg.com/originals/1c/2f/52/1c2f52962906d49ee2c3359a23de64e1.jpg" alt="Card image cap">
+            <div style="width:100%;">
                 <div class="card-body">
-                    <small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</small>
+                    <img style="max-width: 100%;" class="card-img-top" src="{{photo.image.url}}" alt="{{photo.name}}">
+                    <small>{{photo.description}}</small>
                   </div>
             </div>
 

@@ -25,10 +25,16 @@
                         Categories
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">All</li>
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">
+                            <a href="{% url 'gallery' %}">All</a>                                
+                        </li>
+
+                        {% for category in categories %}
+                            <li class="list-group-item">
+                                <a href="{% url 'gallery' %}?category={{category.slug}}">{{ category.name }}</a>                                
+                            </li>
+                        {% endfor %}
+
                     </ul>
                     <a href="{% url 'add' %}" class="btn btn-dark btn-sm m-1">Add Photo</a>
 
@@ -37,17 +43,21 @@
 
             <div class="col-md-9">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="https://i.pinimg.com/originals/1c/2f/52/1c2f52962906d49ee2c3359a23de64e1.jpg" alt="Card image cap">
-    
-                            <div class="card-body">
-                              <small>Category: Animals</small>
+                    {% for photo in photos %}
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img class="card-img-top" src="{{photo.image.url}}" alt="Card image cap">
+        
+                                <div class="card-body">
+                                <small>Category: {{photo.category.name}}</small>
+                                </div>
+                                
+                                <a href="{% url 'photo' photo.slug %}" class="btn btn-outline-dark btn-sm m-1">View</a>
                             </div>
-                            
-                            <a href="{% url 'photo' 5 %}" class="btn btn-outline-dark btn-sm m-1">View</a>
                         </div>
-                    </div>
+                        {% empty %}
+                        <h3>No photos...</h3>
+                    {% endfor %}
                     
                 </div>
             </div>

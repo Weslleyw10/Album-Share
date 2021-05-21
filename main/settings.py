@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'photos.apps.PhotosConfig'
+
+    'photos.apps.PhotosConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +131,12 @@ STATICFILES_DIRS = [
 ]
 
 
+AWS_QUERYSTRING_AUTH = False
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = 'AKIAWDACSAWMZ76PXC6J'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'photoshare-wls'
 
 
 # Default primary key field type
